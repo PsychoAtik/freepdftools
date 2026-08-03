@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image to PDF Free — Convert JPG/PNG to PDF | FreePDFTools</title>
+<meta name="description" content="Combine JPG or PNG photos into one PDF document, free. Runs entirely in your browser.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="shell">
+    <a href="index.html" class="brand" style="text-decoration:none;"><span class="mark"></span><span>Free<span class="free">PDF</span>Tools</span></a>
+    <nav class="top-nav"><a href="index.html">All tools</a><a href="about.html">About</a><a href="privacy.html">Privacy</a></nav>
+  </div>
+</header>
+
+<main class="shell">
+  <div class="tool-page-head">
+    <div class="eyebrow">/// image to pdf</div>
+    <h1>Image to PDF</h1>
+    <p>Combine JPG or PNG photos into a single, clean PDF document, in the order you choose.</p>
+  </div>
+
+  <div class="workspace">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Add image files">
+      <div class="dz-title">Click to add JPG or PNG images, or drag them here</div>
+      <div class="dz-sub">You can add more images at any time</div>
+      <input type="file" id="fileInput" accept="image/jpeg,image/png" multiple>
+    </div>
+
+    <div class="file-list" id="fileList"></div>
+    <div class="empty-state" id="emptyState">No images added yet.</div>
+    <div id="statusMsg"></div>
+
+    <div class="actions-bar">
+      <button class="btn-ghost" id="clearBtn">Clear all</button>
+      <button class="btn-primary" id="createBtn" disabled>Create PDF</button>
+    </div>
+  </div>
+
+  <div class="privacy-note" style="margin-top:-36px; margin-bottom:40px;">
+    <span class="dot"></span>
+    Your images are processed on your device and never uploaded anywhere.
+  </div>
+
+  <div class="guide">
+    <h2>How to convert images to PDF</h2>
+    <ol>
+      <li>Add the JPG or PNG images you want to include.</li>
+      <li>Use the up/down arrows to set the order they should appear in the PDF.</li>
+      <li>Press "Create PDF" — the file will download automatically, one image per page.</li>
+    </ol>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <span>&copy; 2026 FreePDFTools</span>
+    <div><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a><a href="contact.html">Contact</a></div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="image-to-pdf.js"></script>
+</body>
+</html>
