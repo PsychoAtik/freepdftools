@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reorder & Delete PDF Pages Free | FreePDFTools</title>
+<meta name="description" content="Reorder or delete pages in a PDF, free. Runs entirely in your browser.">
+<link rel="stylesheet" href="style.css">
+<style>
+  .thumb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; padding: 20px; }
+  .thumb-card { border: 1px solid var(--line); border-radius: var(--radius-s); overflow: hidden; background: var(--paper); }
+  .thumb-card canvas { width: 100%; display: block; border-bottom: 1px solid var(--line); }
+  .thumb-card .thumb-label { font-size: 11.5px; text-align: center; padding: 6px 4px 4px; color: var(--ink-soft); font-family: 'IBM Plex Mono', monospace; }
+  .thumb-card .thumb-actions { display: flex; justify-content: center; gap: 4px; padding: 0 4px 8px; }
+  .thumb-card button.icon-btn { width: 24px; height: 24px; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="shell">
+    <a href="index.html" class="brand" style="text-decoration:none;"><span class="mark"></span><span>Free<span class="free">PDF</span>Tools</span></a>
+    <nav class="top-nav"><a href="index.html">All tools</a><a href="about.html">About</a><a href="privacy.html">Privacy</a></nav>
+  </div>
+</header>
+
+<main class="shell">
+  <div class="tool-page-head">
+    <div class="eyebrow">/// reorder</div>
+    <h1>Reorder &amp; Delete Pages</h1>
+    <p>See every page as a thumbnail, move pages around, or remove the ones you don't need.</p>
+  </div>
+
+  <div class="workspace">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Add a PDF file">
+      <div class="dz-title">Click to choose a PDF file, or drag it here</div>
+      <div class="dz-sub">One file at a time</div>
+      <input type="file" id="fileInput" accept="application/pdf">
+    </div>
+
+    <div class="empty-state" id="emptyState">No file selected yet.</div>
+    <div class="progress-line" id="progressLine" style="padding:0 20px 10px; font-size:13px; color:var(--ink-soft);"></div>
+    <div class="thumb-grid" id="thumbGrid"></div>
+    <div id="statusMsg"></div>
+
+    <div class="actions-bar">
+      <button class="btn-ghost" id="clearBtn">Clear</button>
+      <button class="btn-primary" id="saveBtn" disabled>Save Changes</button>
+    </div>
+  </div>
+
+  <div class="privacy-note" style="margin-top:-36px; margin-bottom:40px;">
+    <span class="dot"></span>
+    Your file is processed on your device and never uploaded anywhere.
+  </div>
+
+  <div class="guide">
+    <h2>How to reorder or delete pages</h2>
+    <ol>
+      <li>Choose a PDF — every page will show up as a small preview.</li>
+      <li>Use the ↑ / ↓ buttons under a page to move it, or ✕ to remove it.</li>
+      <li>Press "Save Changes" to download the updated PDF.</li>
+    </ol>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <span>&copy; 2026 FreePDFTools</span>
+    <div><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a><a href="contact.html">Contact</a></div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/pdfjs-dist@3.11.174/legacy/build/pdf.min.js"></script>
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="organize.js"></script>
+</body>
+</html>
