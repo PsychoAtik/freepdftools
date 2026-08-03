@@ -1,0 +1,410 @@
+/* ===================================================================
+   FreePDFTools — Design System
+   Concept: a "document tray" — tools are drawn as file folders with
+   a tab, since the whole product is about handling documents.
+   =================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root {
+  --paper: #FAFAF8;
+  --paper-raised: #FFFFFF;
+  --ink: #191B1D;
+  --ink-soft: #5B6066;
+  --ink-faint: #8A8F94;
+  --line: #E4E2DD;
+  --line-strong: #D2CFC8;
+  --accent: #2F4B8C;
+  --accent-hover: #24396B;
+  --accent-soft: #EAEEF7;
+  --tab: #B98A2E;
+  --tab-soft: #F6EEDC;
+  --success: #3F7D5C;
+  --success-soft: #E8F1EC;
+  --danger: #B3453C;
+  --danger-soft: #FBEBE9;
+
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --shadow-card: 0 1px 2px rgba(25,27,29,0.04), 0 6px 16px rgba(25,27,29,0.05);
+  --shadow-card-hover: 0 2px 4px rgba(25,27,29,0.06), 0 12px 28px rgba(25,27,29,0.09);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .display {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.mono {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+button, .btn { font-family: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Layout shell
+   --------------------------------------------------------------- */
+.shell {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.site-header .shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.brand .mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  background: var(--accent);
+  position: relative;
+  flex-shrink: 0;
+}
+.brand .mark::after {
+  content: '';
+  position: absolute;
+  top: 6px; left: 6px; right: 6px;
+  height: 2px;
+  background: var(--paper);
+  box-shadow: 0 5px 0 var(--paper), 0 10px 0 var(--paper);
+}
+
+.brand span { color: var(--ink); }
+.brand .free { color: var(--tab); }
+
+nav.top-nav { display: flex; gap: 24px; font-size: 14px; font-weight: 500; }
+nav.top-nav a { color: var(--ink-soft); }
+nav.top-nav a:hover { color: var(--ink); text-decoration: none; }
+
+footer.site-footer {
+  border-top: 1px solid var(--line);
+  margin-top: 64px;
+  padding: 28px 0 40px;
+  color: var(--ink-faint);
+  font-size: 13px;
+}
+footer.site-footer .shell {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+footer.site-footer a { color: var(--ink-soft); margin-right: 16px; }
+
+/* ---------------------------------------------------------------
+   Hero / intro — plain-spoken, not a marketing banner
+   --------------------------------------------------------------- */
+.intro {
+  padding: 56px 0 36px;
+}
+.intro .eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tab);
+  margin-bottom: 14px;
+}
+.intro h1 {
+  font-size: 38px;
+  line-height: 1.15;
+  max-width: 620px;
+}
+.intro p {
+  margin-top: 14px;
+  max-width: 540px;
+  color: var(--ink-soft);
+  font-size: 16px;
+}
+
+/* ---------------------------------------------------------------
+   Tool tray — the signature element.
+   Each tool is a "folder" with a tab bearing its file-operation code.
+   --------------------------------------------------------------- */
+.tray {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px 16px;
+  padding: 8px 0 48px;
+}
+@media (max-width: 760px) {
+  .tray { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .tray { grid-template-columns: 1fr; }
+}
+
+.tool-card {
+  position: relative;
+  display: block;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 0 var(--radius-m) var(--radius-m) var(--radius-m);
+  padding: 22px 18px 20px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  color: var(--ink);
+}
+.tool-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--line-strong);
+  text-decoration: none;
+}
+
+.tool-card::before {
+  content: attr(data-tab);
+  position: absolute;
+  top: -13px;
+  left: -1px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--tab);
+  background: var(--tab-soft);
+  border: 1px solid var(--line);
+  border-bottom: none;
+  padding: 4px 10px 5px;
+  border-radius: 6px 6px 0 0;
+}
+
+.tool-card .icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.tool-card h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.tool-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------------
+   Tool page (e.g. merge.html)
+   --------------------------------------------------------------- */
+.tool-page-head {
+  padding: 40px 0 8px;
+}
+.tool-page-head .eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tab);
+  margin-bottom: 10px;
+}
+.tool-page-head h1 { font-size: 30px; }
+.tool-page-head p { color: var(--ink-soft); margin-top: 10px; max-width: 560px; }
+
+.workspace {
+  margin: 28px 0 56px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--paper-raised);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.dropzone {
+  border: 2px dashed var(--line-strong);
+  border-radius: var(--radius-m);
+  margin: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.dropzone:hover, .dropzone.drag-over {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.dropzone .dz-title { font-weight: 600; font-size: 15px; }
+.dropzone .dz-sub { color: var(--ink-faint); font-size: 13px; margin-top: 6px; }
+.dropzone input[type="file"] { display: none; }
+
+.file-list {
+  padding: 0 20px;
+}
+.file-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.file-row:last-child { border-bottom: none; }
+.file-row .badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 3px 7px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.file-row .name {
+  flex: 1;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.file-row .size {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-faint);
+  flex-shrink: 0;
+}
+.file-row .move-btns { display: flex; gap: 4px; flex-shrink: 0; }
+.file-row button.icon-btn {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink-soft);
+  width: 26px; height: 26px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+}
+.file-row button.icon-btn:hover { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+.file-row button.remove { color: var(--danger); }
+.file-row button.remove:hover { background: var(--danger-soft); border-color: var(--danger); }
+
+.actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: var(--radius-s);
+  font-weight: 600;
+  font-size: 14.5px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-primary:disabled { background: var(--line-strong); color: var(--ink-faint); cursor: not-allowed; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  padding: 11px 18px;
+  border-radius: var(--radius-s);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn-ghost:hover { border-color: var(--ink-soft); color: var(--ink); }
+
+.status-msg {
+  font-size: 13.5px;
+  padding: 12px 20px;
+}
+.status-msg.success { color: var(--success); background: var(--success-soft); }
+.status-msg.error { color: var(--danger); background: var(--danger-soft); }
+
+.privacy-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  margin-top: 14px;
+}
+.privacy-note .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--success);
+  flex-shrink: 0;
+}
+
+.guide {
+  margin: 40px 0 60px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.guide h2 { font-size: 20px; margin-bottom: 16px; }
+.guide ol { padding-left: 20px; color: var(--ink-soft); }
+.guide li { margin-bottom: 8px; }
+
+.empty-state {
+  text-align: center;
+  padding: 36px 20px;
+  color: var(--ink-faint);
+  font-size: 13.5px;
+}

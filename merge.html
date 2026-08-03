@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merge PDF Files Free — Combine PDFs Online | FreePDFTools</title>
+<meta name="description" content="Combine multiple PDF files into one document for free. Reorder pages before merging. Everything happens in your browser — files are never uploaded.">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="shell">
+    <a href="../index.html" class="brand" style="text-decoration:none;">
+      <span class="mark"></span>
+      <span>Free<span class="free">PDF</span>Tools</span>
+    </a>
+    <nav class="top-nav">
+      <a href="../index.html">All tools</a>
+      <a href="../about.html">About</a>
+      <a href="../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="shell">
+  <div class="tool-page-head">
+    <div class="eyebrow">/// merge</div>
+    <h1>Merge PDF files</h1>
+    <p>Add two or more PDFs, put them in the order you want, and combine them into a single file.</p>
+  </div>
+
+  <div class="workspace">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Add PDF files">
+      <div class="dz-title">Click to add PDF files, or drag them here</div>
+      <div class="dz-sub">You can add more files at any time before merging</div>
+      <input type="file" id="fileInput" accept="application/pdf" multiple>
+    </div>
+
+    <div class="file-list" id="fileList"></div>
+
+    <div class="empty-state" id="emptyState">No files added yet.</div>
+
+    <div id="statusMsg"></div>
+
+    <div class="actions-bar">
+      <button class="btn-ghost" id="clearBtn">Clear all</button>
+      <button class="btn-primary" id="mergeBtn" disabled>Merge PDFs</button>
+    </div>
+  </div>
+
+  <div class="privacy-note" style="margin-top:-36px; margin-bottom:40px;">
+    <span class="dot"></span>
+    Your files are processed on your device and never uploaded anywhere.
+  </div>
+
+  <div class="guide">
+    <h2>How to merge PDF files</h2>
+    <ol>
+      <li>Click the box above and choose the PDF files you want to combine (or drag them in).</li>
+      <li>Use the up/down arrows next to each file to put them in the order you want the final document to read.</li>
+      <li>Press "Merge PDFs" — your browser will build the combined file and download it automatically.</li>
+    </ol>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <span>&copy; 2026 FreePDFTools</span>
+    <div>
+      <a href="../about.html">About</a>
+      <a href="../privacy.html">Privacy Policy</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="../js/merge.js"></script>
+</body>
+</html>
