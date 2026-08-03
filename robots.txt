@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://freepdftools.pages.dev/sitemap.xml
+Sitemap: https://freepdftools-seven.vercel.app/sitemap.xml
