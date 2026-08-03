@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Resizer — Shrink PDF File Size Free | FreePDFTools</title>
+<meta name="description" content="Reduce a PDF's file size so it's small enough to email or upload. Runs entirely in your browser — no upload to any server.">
+<link rel="stylesheet" href="style.css">
+<style>
+  .quality-options { display: flex; gap: 10px; padding: 0 20px 20px; flex-wrap: wrap; }
+  .quality-option { flex: 1; min-width: 140px; border: 1px solid var(--line); border-radius: var(--radius-s); padding: 14px; cursor: pointer; transition: border-color 0.15s ease, background 0.15s ease; }
+  .quality-option:hover { border-color: var(--line-strong); }
+  .quality-option input { margin-right: 8px; }
+  .quality-option.active { border-color: var(--accent); background: var(--accent-soft); }
+  .quality-option .q-title { font-weight: 600; font-size: 14px; }
+  .quality-option .q-sub { font-size: 12.5px; color: var(--ink-soft); margin-top: 3px; }
+  .progress-line { font-size: 13px; color: var(--ink-soft); padding: 0 20px 14px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="shell">
+    <a href="index.html" class="brand" style="text-decoration:none;">
+      <span class="mark"></span>
+      <span>Free<span class="free">PDF</span>Tools</span>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">All tools</a>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="shell">
+  <div class="tool-page-head">
+    <div class="eyebrow">/// resize</div>
+    <h1>PDF Resizer</h1>
+    <p>Shrink a PDF so it's small enough to email or upload somewhere with a size limit.</p>
+  </div>
+
+  <div class="workspace">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Add a PDF file">
+      <div class="dz-title">Click to choose a PDF file, or drag it here</div>
+      <div class="dz-sub">One file at a time</div>
+      <input type="file" id="fileInput" accept="application/pdf">
+    </div>
+
+    <div class="file-list" id="fileList"></div>
+    <div class="empty-state" id="emptyState">No file selected yet.</div>
+
+    <div class="quality-options" id="qualityOptions" style="display:none;">
+      <label class="quality-option active" data-value="light">
+        <input type="radio" name="quality" value="light" checked>
+        <div class="q-title">Light</div>
+        <div class="q-sub">Smaller size, keeps good quality</div>
+      </label>
+      <label class="quality-option" data-value="balanced">
+        <input type="radio" name="quality" value="balanced">
+        <div class="q-title">Balanced</div>
+        <div class="q-sub">Good size reduction</div>
+      </label>
+      <label class="quality-option" data-value="max">
+        <input type="radio" name="quality" value="max">
+        <div class="q-title">Maximum</div>
+        <div class="q-sub">Smallest file, lower quality</div>
+      </label>
+    </div>
+
+    <div class="progress-line" id="progressLine"></div>
+    <div id="statusMsg"></div>
+
+    <div class="actions-bar">
+      <button class="btn-ghost" id="clearBtn">Clear</button>
+      <button class="btn-primary" id="resizeBtn" disabled>Resize PDF</button>
+    </div>
+  </div>
+
+  <div class="privacy-note" style="margin-top:-36px; margin-bottom:40px;">
+    <span class="dot"></span>
+    Your file is processed on your device and never uploaded anywhere.
+  </div>
+
+  <div class="guide">
+    <h2>How to resize a PDF</h2>
+    <ol>
+      <li>Choose the PDF you want to shrink.</li>
+      <li>Pick a compression level — Light keeps the most quality, Maximum gives the smallest file.</li>
+      <li>Press "Resize PDF". Your browser will rebuild the file and download it automatically.</li>
+    </ol>
+    <p style="font-size:13px; color:var(--ink-faint); margin-top:14px;">Note: this works by re-rendering each page as an image, so it's best for scanned documents or image-heavy PDFs. Text in the output will no longer be selectable or searchable.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <span>&copy; 2026 FreePDFTools</span>
+    <div>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/pdfjs-dist@3.11.174/legacy/build/pdf.min.js"></script>
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="resize.js"></script>
+</body>
+</html>
