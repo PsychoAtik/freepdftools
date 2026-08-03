@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Split PDF Free — Extract Pages Online | FreePDFTools</title>
+<meta name="description" content="Pull specific pages or a page range out of a PDF into a new file. Runs entirely in your browser — nothing is uploaded.">
+<link rel="stylesheet" href="style.css">
+<style>
+  .range-box { padding: 0 20px 20px; }
+  .range-box label { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 8px; }
+  .range-box input[type="text"] {
+    width: 100%; box-sizing: border-box; padding: 12px 14px; font-size: 15px;
+    border: 1px solid var(--line); border-radius: var(--radius-s);
+    font-family: 'IBM Plex Mono', monospace; color: var(--ink);
+  }
+  .range-box input[type="text"]:focus { outline: none; border-color: var(--accent); }
+  .range-box .hint { font-size: 12.5px; color: var(--ink-faint); margin-top: 8px; }
+  .page-count { font-size: 12.5px; color: var(--ink-soft); padding: 0 20px 14px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="shell">
+    <a href="index.html" class="brand" style="text-decoration:none;">
+      <span class="mark"></span>
+      <span>Free<span class="free">PDF</span>Tools</span>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">All tools</a>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="shell">
+  <div class="tool-page-head">
+    <div class="eyebrow">/// split</div>
+    <h1>Split PDF</h1>
+    <p>Pull specific pages, or a range of pages, out of a PDF into their own file.</p>
+  </div>
+
+  <div class="workspace">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Add a PDF file">
+      <div class="dz-title">Click to choose a PDF file, or drag it here</div>
+      <div class="dz-sub">One file at a time</div>
+      <input type="file" id="fileInput" accept="application/pdf">
+    </div>
+
+    <div class="file-list" id="fileList"></div>
+    <div class="empty-state" id="emptyState">No file selected yet.</div>
+    <div class="page-count" id="pageCount"></div>
+
+    <div class="range-box" id="rangeBox" style="display:none;">
+      <label for="rangeInput">Which pages do you want?</label>
+      <input type="text" id="rangeInput" placeholder="e.g. 1-3, 5, 8-10">
+      <div class="hint">Separate with commas. Use a dash for a range. Example: 1-3, 5, 8-10</div>
+    </div>
+
+    <div id="statusMsg"></div>
+
+    <div class="actions-bar">
+      <button class="btn-ghost" id="clearBtn">Clear</button>
+      <button class="btn-primary" id="splitBtn" disabled>Extract Pages</button>
+    </div>
+  </div>
+
+  <div class="privacy-note" style="margin-top:-36px; margin-bottom:40px;">
+    <span class="dot"></span>
+    Your file is processed on your device and never uploaded anywhere.
+  </div>
+
+  <div class="guide">
+    <h2>How to split a PDF</h2>
+    <ol>
+      <li>Choose the PDF you want to split.</li>
+      <li>Type which pages you want in the box — for example <code>1-3, 5, 8-10</code> to grab pages 1 through 3, page 5, and pages 8 through 10.</li>
+      <li>Press "Extract Pages" — a new PDF with just those pages will download automatically.</li>
+    </ol>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <span>&copy; 2026 FreePDFTools</span>
+    <div>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="split.js"></script>
+</body>
+</html>
