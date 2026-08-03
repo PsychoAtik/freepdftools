@@ -7,7 +7,6 @@
   const clearBtn = document.getElementById('clearBtn');
   const statusMsg = document.getElementById('statusMsg');
 
-  /** @type {File[]} */
   let files = [];
 
   function formatSize(bytes) {
@@ -52,7 +51,6 @@
     render();
   }
 
-  // --- Dropzone interactions ---
   dropzone.addEventListener('click', () => fileInput.click());
   dropzone.addEventListener('keypress', (e) => {
     if (e.key === 'Enter' || e.key === ' ') fileInput.click();
@@ -75,7 +73,6 @@
     if (e.dataTransfer.files.length) addFiles(e.dataTransfer.files);
   });
 
-  // --- File list actions ---
   fileListEl.addEventListener('click', (e) => {
     const btn = e.target.closest('button');
     if (!btn) return;
@@ -99,7 +96,6 @@
     render();
   });
 
-  // --- Merge action ---
   mergeBtn.addEventListener('click', async () => {
     if (files.length < 2) return;
 
