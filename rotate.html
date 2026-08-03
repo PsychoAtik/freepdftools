@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotate PDF Free — Fix Sideways Pages | FreePDFTools</title>
+<meta name="description" content="Rotate every page of a PDF 90, 180, or 270 degrees, free. Runs entirely in your browser.">
+<link rel="stylesheet" href="style.css">
+<style>
+  .rotate-options { display: flex; gap: 10px; padding: 0 20px 20px; flex-wrap: wrap; }
+  .rotate-option { flex: 1; min-width: 110px; border: 1px solid var(--line); border-radius: var(--radius-s); padding: 16px 10px; cursor: pointer; text-align: center; transition: border-color 0.15s ease, background 0.15s ease; }
+  .rotate-option:hover { border-color: var(--line-strong); }
+  .rotate-option.active { border-color: var(--accent); background: var(--accent-soft); }
+  .rotate-option .r-icon { font-size: 22px; display: block; margin-bottom: 6px; }
+  .rotate-option .r-title { font-size: 13px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="shell">
+    <a href="index.html" class="brand" style="text-decoration:none;"><span class="mark"></span><span>Free<span class="free">PDF</span>Tools</span></a>
+    <nav class="top-nav"><a href="index.html">All tools</a><a href="about.html">About</a><a href="privacy.html">Privacy</a></nav>
+  </div>
+</header>
+
+<main class="shell">
+  <div class="tool-page-head">
+    <div class="eyebrow">/// rotate</div>
+    <h1>Rotate PDF</h1>
+    <p>Fix sideways or upside-down pages before you send a document off.</p>
+  </div>
+
+  <div class="workspace">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Add a PDF file">
+      <div class="dz-title">Click to choose a PDF file, or drag it here</div>
+      <div class="dz-sub">One file at a time</div>
+      <input type="file" id="fileInput" accept="application/pdf">
+    </div>
+
+    <div class="file-list" id="fileList"></div>
+    <div class="empty-state" id="emptyState">No file selected yet.</div>
+
+    <div class="rotate-options" id="rotateOptions" style="display:none;">
+      <div class="rotate-option active" data-degrees="90">
+        <span class="r-icon">↻</span><span class="r-title">Rotate right 90°</span>
+      </div>
+      <div class="rotate-option" data-degrees="180">
+        <span class="r-icon">⇅</span><span class="r-title">Rotate 180°</span>
+      </div>
+      <div class="rotate-option" data-degrees="270">
+        <span class="r-icon">↺</span><span class="r-title">Rotate left 90°</span>
+      </div>
+    </div>
+
+    <div id="statusMsg"></div>
+
+    <div class="actions-bar">
+      <button class="btn-ghost" id="clearBtn">Clear</button>
+      <button class="btn-primary" id="rotateBtn" disabled>Rotate PDF</button>
+    </div>
+  </div>
+
+  <div class="privacy-note" style="margin-top:-36px; margin-bottom:40px;">
+    <span class="dot"></span>
+    Your file is processed on your device and never uploaded anywhere.
+  </div>
+
+  <div class="guide">
+    <h2>How to rotate a PDF</h2>
+    <ol>
+      <li>Choose the PDF you want to fix.</li>
+      <li>Pick a rotation direction — this applies to every page.</li>
+      <li>Press "Rotate PDF" to download the fixed file.</li>
+    </ol>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <span>&copy; 2026 FreePDFTools</span>
+    <div><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a><a href="contact.html">Contact</a></div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="rotate.js"></script>
+</body>
+</html>
