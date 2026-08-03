@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF to JPG Free — Convert PDF Pages to Images | FreePDFTools</title>
+<meta name="description" content="Turn every page of a PDF into a JPG image, free. Runs entirely in your browser.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="shell">
+    <a href="index.html" class="brand" style="text-decoration:none;"><span class="mark"></span><span>Free<span class="free">PDF</span>Tools</span></a>
+    <nav class="top-nav"><a href="index.html">All tools</a><a href="about.html">About</a><a href="privacy.html">Privacy</a></nav>
+  </div>
+</header>
+
+<main class="shell">
+  <div class="tool-page-head">
+    <div class="eyebrow">/// pdf to jpg</div>
+    <h1>PDF to JPG</h1>
+    <p>Convert every page of a PDF into a downloadable JPG image.</p>
+  </div>
+
+  <div class="workspace">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Add a PDF file">
+      <div class="dz-title">Click to choose a PDF file, or drag it here</div>
+      <div class="dz-sub">One file at a time</div>
+      <input type="file" id="fileInput" accept="application/pdf">
+    </div>
+
+    <div class="file-list" id="fileList"></div>
+    <div class="empty-state" id="emptyState">No file selected yet.</div>
+    <div class="progress-line" id="progressLine" style="padding:0 20px 14px; font-size:13px; color:var(--ink-soft);"></div>
+    <div id="statusMsg"></div>
+
+    <div class="actions-bar">
+      <button class="btn-ghost" id="clearBtn">Clear</button>
+      <button class="btn-primary" id="convertBtn" disabled>Convert to JPG</button>
+    </div>
+  </div>
+
+  <div class="privacy-note" style="margin-top:-36px; margin-bottom:40px;">
+    <span class="dot"></span>
+    Your file is processed on your device and never uploaded anywhere.
+  </div>
+
+  <div class="guide">
+    <h2>How to convert PDF to JPG</h2>
+    <ol>
+      <li>Choose the PDF you want to convert.</li>
+      <li>Press "Convert to JPG".</li>
+      <li>If the PDF has one page, a single JPG downloads. If it has more, a ZIP file with one JPG per page downloads.</li>
+    </ol>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <span>&copy; 2026 FreePDFTools</span>
+    <div><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a><a href="contact.html">Contact</a></div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/pdfjs-dist@3.11.174/legacy/build/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="pdf-to-jpg.js"></script>
+</body>
+</html>
